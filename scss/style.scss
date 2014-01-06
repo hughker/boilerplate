@@ -1,0 +1,16 @@
+/**
+    Sitename
+**/
+
+
+/* Assets */
+@import "assets/vars";
+@import "assets/mixins";
+@import "assets/reset";
+
+/* Modules */
+@import "modules/header";
+@import "modules/footer";
+
+/* Templates */
+@import "templates/home";
