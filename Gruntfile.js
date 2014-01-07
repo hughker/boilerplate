@@ -7,12 +7,30 @@ module.exports = function(grunt) {
         sass: {
           dist: {
             options: {
-                style: 'compressed'
+                style: 'expanded'
             },
             files: {
                 'css/style.css': 'scss/style.scss'
             }
           }
+        },
+
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 version', 'ie 9']
+            },
+            single_file: {
+                src: 'css/style.css',
+                dest: 'css/style.prefixed.css'
+            }
+        },
+
+        cssmin: {
+            combine: {
+                files: {
+                    'css/style.min.css': ['css/style.prefixed.css']
+                }
+            }
         },
 
         jshint: {
@@ -49,7 +67,7 @@ module.exports = function(grunt) {
             },
             css: {
                 files: ['scss/**/*.scss'],
-                tasks: ['sass'],
+                tasks: ['sass', 'autoprefixer', 'cssmin'],
                 options: {
                     spawn: false,
                 }
