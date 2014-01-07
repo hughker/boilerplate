@@ -34,13 +34,13 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            beforeconcat: ['js/*.js']
+            beforeconcat: ['js/scripts.js']
         },
 
         concat: {
           dist: {
             src: [
-                'js/libs/*.js',
+                'js/_libs/*.js',
                 'js/scripts.js'
             ],
             dest: 'js/scripts.concat.js'
@@ -60,7 +60,7 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: ['js/*.js'],
-                tasks: ['concat', 'uglify'],
+                tasks: ['jshint', 'concat', 'uglify'],
                 options: {
                     spawn: false,
                 }
