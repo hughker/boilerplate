@@ -1,0 +1,40 @@
+/**
+    Icons
+**/
+
+@mixin icon($type, $pseudo: before, $display: block) {
+    &:#{$pseudo} {
+        display: $display;
+        color: inherit;
+        font-family: 'Icons';
+        font-style: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+
+        @if $type == twitter {
+            content: '\e606';
+            font-size: 20px;
+        } @else if $type == facebook {
+            content: '\e605';
+            font-size: 20px;
+        }
+    }
+
+    span {
+        display: none;
+    }
+}
+
+/*
+.icon {
+    display: block;
+}
+
+.icon--twitter {
+    @include icon(twitter);
+}
+
+.icon--facebook {
+    @include icon(twitter);
+}
+*/

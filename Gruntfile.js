@@ -54,23 +54,38 @@ module.exports = function(grunt) {
             }
         },
 
+        buildCSS: {
+            tasks: ['sass', 'autoprefixer', 'cssmin']
+        },
+
+        buildJS: {
+            tasks: ['jshint', 'concat', 'uglify']
+        },
+
+        // optimizeImages: {
+        //     tasks: ['imagestuff']
+        // },
+
         watch: {
             options: {
                 livereload: true,
             },
             scripts: {
-                files: ['js/*.js'],
-                tasks: ['jshint', 'concat', 'uglify'],
+                files: ['js/**/*.js'],
+                tasks: ['buildJS'],
                 options: {
                     spawn: false,
                 }
             },
             css: {
                 files: ['scss/**/*.scss'],
-                tasks: ['sass', 'autoprefixer', 'cssmin'],
+                tasks: ['buildCSS'],
                 options: {
                     spawn: false,
                 }
+            },
+            files: {
+                files: ['*.php']
             }
         },
 
@@ -87,7 +102,10 @@ module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
 
-    //grunt.registerTask('default', ['concat', 'uglify', 'sass', 'imagemin']);
+    grunt.registerTask('buildCSS');
+    grunt.registerTask('buildJS');
+    //grunt.registerTask('optimizeImages');
+    grunt.registerTask('build', ['buildCSS', 'buildJS'/*, 'optimizeImages'*/]);
     grunt.registerTask('dev', ['connect', 'watch']);
 
 };
