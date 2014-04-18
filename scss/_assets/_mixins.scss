@@ -2,12 +2,6 @@
     Mixins
 **/
 
-@mixin box-sizing($sizing) {
-    -webkit-box-sizing: $sizing;
-       -moz-box-sizing: $sizing;
-            box-sizing: $sizing;
-}
-
 @mixin placeholder($color) {
     &::-webkit-input-placeholder {
         color: $color;
