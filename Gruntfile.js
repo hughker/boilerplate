@@ -102,10 +102,10 @@ module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
 
-    grunt.registerTask('buildCSS');
-    grunt.registerTask('buildJS');
+    grunt.registerTask('buildCSS', ['sass', 'autoprefixer', 'cssmin']);
+    grunt.registerTask('buildJS', ['jshint', 'concat', 'uglify']);
     //grunt.registerTask('optimizeImages');
-    grunt.registerTask('build', ['buildCSS', 'buildJS'/*, 'optimizeImages'*/]);
+    grunt.registerTask('build', ['buildCSS', 'buildJS'/*, optimzeImages*/]);
     grunt.registerTask('dev', ['connect', 'watch']);
 
 };
