@@ -26,7 +26,7 @@
         }
     }
     @elseif $point == retina {
-        @media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (-o-min-device-pixel-ratio: 5/4) {
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (-o-min-device-pixel-ratio: 2/1) {
             @content;
         }
     }
