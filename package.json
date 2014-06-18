@@ -1,21 +1,19 @@
 {
-    "name": "boilerplate",
-    "description": "boilerplate",
+    "name": "ProjectName",
+    "description": "Project description",
     "version": "1.0.0",
-    "homepage": "http://",
+    "homepage": "projecturl",
     "devDependencies": {
-        "grunt": "~0.4.4",
-        "grunt-contrib-watch": "~0.6.1",
-        "grunt-contrib-sass": "~0.7.3",
-        "grunt-autoprefixer": "~0.7.2",
-        "grunt-contrib-cssmin": "~0.9.0",
-        "grunt-contrib-jshint": "~0.10.0",
-        "grunt-contrib-concat": "~0.4.0",
-        "grunt-contrib-uglify": "~0.4.0",
-        "grunt-contrib-connect": "~0.7.1",
-        "grunt-notify": "~0.2.20"
-    },
-    "dependencies": {
-        "load-grunt-tasks": "~0.4.0"
+        "gulp": "~3.8.0",
+        "gulp-rename": "~1.2.0",
+        "gulp-sass": "~0.7.2",
+        "gulp-autoprefixer": "~0.0.7",
+        "gulp-cssmin": "~0.1.5",
+        "gulp-jshint": "~1.6.3",
+        "gulp-concat": "~2.2.0",
+        "gulp-uglify": "~0.3.0",
+        "gulp-add-src": "~0.1.1",
+        "gulp-watch": "~0.6.6",
+        "gulp-livereload": "~2.1.0"
     }
 }
