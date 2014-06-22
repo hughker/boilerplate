@@ -8,12 +8,17 @@ var gulp         = require('gulp'),
     uglify       = require('gulp-uglify'),
     addsrc       = require('gulp-add-src'),
     watch        = require('gulp-watch'),
-    livereload   = require('gulp-livereload');
+    livereload   = require('gulp-livereload'),
+    notify       = require('gulp-notify');
 
 
 gulp.task('sass', function() {
     gulp.src('./scss/style.scss')
-        .pipe(sass())
+        .pipe(sass({
+            onError: function(err) {
+                         return notify().write(err);
+                     }
+        }))
         .pipe(autoprefixer("last 2 version", "ie 9"))
         .pipe(cssmin())
         .pipe(rename({suffix: '.min'}))
