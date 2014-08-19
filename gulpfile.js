@@ -7,6 +7,7 @@ var gulp         = require('gulp'),
     concat       = require('gulp-concat'),
     uglify       = require('gulp-uglify'),
     addsrc       = require('gulp-add-src'),
+    order        = require('gulp-order'),
     watch        = require('gulp-watch'),
     livereload   = require('gulp-livereload'),
     notify       = require('gulp-notify');
@@ -30,9 +31,13 @@ gulp.task('js', function() {
     gulp.src('./js/scripts.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
-        .pipe(addsrc('./js/*/*.js'))
+        .pipe(addsrc('./js/_libs/*.js'))
+        .pipe(order([
+                'js/_libs/jquery-2.1.1.js',
+                'js/scripts.js'
+            ], { base: './' }))
         .pipe(concat('scripts.min.js'))
-        .pipe(uglify())
+        .pipe(uglify({mangle: false}))
         .pipe(gulp.dest('./dist/js'));
 });
 
