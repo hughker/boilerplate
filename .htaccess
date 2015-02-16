@@ -53,6 +53,12 @@ AddType application/javascript .js
     Header unset ETag
 </IfModule>
 
+# Enable keep-alive
+# http://www.feedthebot.com/pagespeed/keep-alive.html
+<IfModule mod_headers.c>
+    Header set Connection keep-alive
+</IfModule>
+
 FileETag None
 # END Remove `ETags`
 

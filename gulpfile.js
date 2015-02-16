@@ -11,6 +11,7 @@ var gulp         = require('gulp'),
     watch        = require('gulp-watch'),
     livereload   = require('gulp-livereload'),
     notify       = require('gulp-notify');
+    connect      = require('gulp-connect');
 
 
 gulp.task('sass', function() {
@@ -33,12 +34,18 @@ gulp.task('js', function() {
         .pipe(jshint.reporter('default'))
         .pipe(addsrc('./js/_libs/*.js'))
         .pipe(order([
-                'js/_libs/jquery-2.1.1.js',
+                'js/_libs/jquery-2.1.3.js',
+                'js/_libs/owl.carousel.js',
                 'js/scripts.js'
             ], { base: './' }))
         .pipe(concat('scripts.min.js'))
         .pipe(uglify({mangle: false}))
         .pipe(gulp.dest('./dist/js'));
+});
+
+
+gulp.task('connect', function() {
+    connect.server();
 });
 
 
@@ -51,4 +58,5 @@ gulp.task('watch', function() {
 });
 
 
+gulp.task('server', ['connect', 'watch']);
 gulp.task('build', ['sass', 'js']);
