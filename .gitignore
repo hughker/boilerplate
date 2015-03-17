@@ -1,5 +1,7 @@
 node_modules
 dist
+css-temp
+js-temp
 .sass-cache
 .DS_Store
 ._*

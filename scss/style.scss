@@ -1,20 +1,12 @@
-/**
-    Sitename
-**/
+/*------------------------------------*\
+    elbdudler2015
+\*------------------------------------*/
 
-
-/* Assets */
 @import "_assets/vars";
 @import "_assets/mixins";
 @import "_assets/normalize";
-@import "_assets/fonts";
-@import "_assets/icons";
-/* @import "_assets/forms"; */
-/* @import "_assets/buttons"; */
-
-/* Modules */
+@import "_assets/typography";
+@import "_assets/generic";
 @import "_modules/header";
 @import "_modules/footer";
-
-/* Templates */
-@import "_templates/home";
+@import "_assets/helper";

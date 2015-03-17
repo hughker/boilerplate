@@ -1,62 +1,102 @@
-var gulp         = require('gulp'),
-    sass         = require('gulp-sass'),
+var gulp = require('gulp'),
+    sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    rename       = require('gulp-rename'),
-    cssmin       = require('gulp-cssmin'),
-    jshint       = require('gulp-jshint'),
-    concat       = require('gulp-concat'),
-    uglify       = require('gulp-uglify'),
-    addsrc       = require('gulp-add-src'),
-    order        = require('gulp-order'),
-    watch        = require('gulp-watch'),
-    livereload   = require('gulp-livereload'),
-    notify       = require('gulp-notify');
-    connect      = require('gulp-connect');
+    minifycss = require('gulp-minify-css'),
+    jshint = require('gulp-jshint'),
+    uglify = require('gulp-uglify'),
+    addsrc = require('gulp-add-src'),
+    rename = require('gulp-rename'),
+    order = require('gulp-order'),
+    clean = require('gulp-clean'),
+    concat = require('gulp-concat'),
+    notify = require('gulp-notify'),
+    cache = require('gulp-cache'),
+    plumber = require('gulp-plumber'),
+    browserSync = require('browser-sync'),
+    critical = require('critical'),
+    cp = require('child_process');
 
-
-gulp.task('sass', function() {
-    gulp.src('./scss/style.scss')
-        .pipe(sass({
-            onError: function(err) {
-                         return notify().write(err);
-                     }
-        }))
-        .pipe(autoprefixer("last 2 version", "ie 9"))
-        .pipe(cssmin())
-        .pipe(rename({suffix: '.min'}))
-        .pipe(gulp.dest('./dist/css'));
+gulp.task('css', function() {
+  return sass('scss/style.scss', { style: 'expanded' })
+    .pipe(plumber())
+    .pipe(autoprefixer('last 2 version', 'ie 9'))
+    .pipe(gulp.dest('css-temp'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(minifycss())
+    .pipe(gulp.dest('css-temp'))
+    .pipe(gulp.dest('dist/css'))
+    .pipe(browserSync.reload({stream:true}))
+    .pipe(notify({ message: 'Styles task complete' }));
 });
-
 
 gulp.task('js', function() {
-    gulp.src('./js/scripts.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        .pipe(addsrc('./js/_libs/*.js'))
-        .pipe(order([
-                'js/_libs/jquery-2.1.3.js',
-                'js/_libs/owl.carousel.js',
-                'js/scripts.js'
-            ], { base: './' }))
-        .pipe(concat('scripts.min.js'))
-        .pipe(uglify({mangle: false}))
-        .pipe(gulp.dest('./dist/js'));
+  return gulp.src('js/scripts.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'))
+    .pipe(addsrc('./js/_libs/*.js'))
+    .pipe(order([
+            'js/_libs/jquery-2.1.3.js',
+            'js/_libs/countdown.js',
+            'js/_libs/jquery.fitvids.js',
+            'js/scripts.js'
+        ], { base: './' }))
+    .pipe(concat('scripts.js'))
+    .pipe(gulp.dest('js-temp'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest('js-temp'))
+    .pipe(gulp.dest('dist/js'))
+    .pipe(notify({ message: 'Scripts task complete' }));
 });
 
-
-gulp.task('connect', function() {
-    connect.server();
+gulp.task('clean', function() {
+  return gulp.src(['css-temp', 'js-temp'], {read: false})
+    .pipe(clean());
 });
 
+/*gulp.task('critical-css', function() {
+    critical.generate({
+        // Your base directory
+        base: '_site/',
+        // HTML source file
+        src: 'index.html',
+        // CSS output file
+        dest: 'css/critical.min.css',
+        // Viewport width
+        width: 1200,
+        // Viewport height
+        height: 900,
+        // Minify critical-path CSS
+        minify: true
+    });
+});*/
+
+
+/**
+ * Rebuild Jekyll & do page reload
+ */
+gulp.task('files', function () {
+    browserSync.reload();
+});
+
+/**
+ * Wait for jekyll-build, then launch the Server
+ */
+gulp.task('browser-sync', function() {
+    browserSync({
+        proxy: "localdomain.static"
+    });
+});
 
 gulp.task('watch', function() {
-    livereload.listen();
-
-    gulp.watch('./scss/**/*.scss', ['sass']).on('change', livereload.changed);
-    gulp.watch('./js/**/*.js', ['js']).on('change', livereload.changed);
-    gulp.watch('./**/*.php').on('change', livereload.changed);
+  // Watch .scss files
+  gulp.watch('scss/**/*.scss', ['css']);
+  // Watch .js files
+  gulp.watch('js/**/*.js', ['js']);
+  // Watch .php files
+  gulp.watch(['*.php'], ['files']);
 });
 
-
-gulp.task('server', ['connect', 'watch']);
-gulp.task('build', ['sass', 'js']);
+gulp.task('default', ['clean'], function() {
+    gulp.start('css', 'js', 'browser-sync', 'watch');
+});
