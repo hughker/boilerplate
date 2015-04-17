@@ -53,6 +53,17 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
+gulp.task('img', function() {
+  // TODO: image optimisation, at the moment manually with ImageOptim
+  return gulp.src('images/**/*')
+   .pipe(gulp.dest('dist/images'));
+});
+
+gulp.task('fonts', function() {
+  return gulp.src('fonts/**/*')
+   .pipe(gulp.dest('dist/fonts'));
+});
+
 /*gulp.task('critical-css', function() {
     critical.generate({
         // Your base directory
@@ -72,14 +83,14 @@ gulp.task('clean', function() {
 
 
 /**
- * Rebuild & do page reload
+ * Page reload
  */
 gulp.task('files', function () {
     browserSync.reload();
 });
 
 /**
- * Wait for build, then launch the Server
+ * Launch the Server
  */
 gulp.task('browser-sync', function() {
     browserSync({
@@ -95,8 +106,16 @@ gulp.task('watch', function() {
   gulp.watch('js/**/*.js', ['js']);
   // Watch .php files
   gulp.watch(['*.php', 'inc/*.php'], ['files']);
+  // Watch image files
+  gulp.watch('images/**/*', ['img']);
+  // Watch font files
+  gulp.watch('fonts/**/*', ['fonts']);
 });
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('css', 'js', 'browser-sync', 'watch');
+    gulp.start('browser-sync', 'watch');
+});
+
+gulp.task('build', ['clean'], function() {
+    gulp.start('css', 'js', 'img', 'fonts');
 });
