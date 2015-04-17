@@ -36,7 +36,6 @@ gulp.task('js', function() {
     .pipe(addsrc('./js/_libs/*.js'))
     .pipe(order([
             'js/_libs/jquery-2.1.3.js',
-            'js/_libs/countdown.js',
             'js/_libs/jquery.fitvids.js',
             'js/scripts.js'
         ], { base: './' }))
@@ -73,18 +72,19 @@ gulp.task('clean', function() {
 
 
 /**
- * Rebuild Jekyll & do page reload
+ * Rebuild & do page reload
  */
 gulp.task('files', function () {
     browserSync.reload();
 });
 
 /**
- * Wait for jekyll-build, then launch the Server
+ * Wait for build, then launch the Server
  */
 gulp.task('browser-sync', function() {
     browserSync({
-        proxy: "localdomain.static"
+        proxy: "localdomain.static",
+        xip: true
     });
 });
 
@@ -94,7 +94,7 @@ gulp.task('watch', function() {
   // Watch .js files
   gulp.watch('js/**/*.js', ['js']);
   // Watch .php files
-  gulp.watch(['*.php'], ['files']);
+  gulp.watch(['*.php', 'inc/*.php'], ['files']);
 });
 
 gulp.task('default', ['clean'], function() {
