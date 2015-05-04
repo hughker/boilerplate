@@ -1,0 +1,10 @@
+/**
+ * Responsive
+ */
+
+$mq-s: '(max-width: #{$width-s})';
+$mq-m: '(min-width: #{$width-m}) and (max-width: #{$width-l - 1})';
+$mq-l: '(min-width: #{$width-l})';
+$mq-m-up: '(min-width: #{$width-m})';
+$mq-m-down: '(max-width: #{$width-l - 1})';
+$mq-wrap: '(min-width: #{$width-wrap})';

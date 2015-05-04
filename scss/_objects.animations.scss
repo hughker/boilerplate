@@ -1,0 +1,24 @@
+/**
+ * Animations
+ */
+
+.animated,
+.animated--long {
+    animation-fill-mode: both;
+}
+
+.animated {
+    animation-duration: $animation-duration;
+}
+
+.animated--long {
+    animation-duration: $animation-duration-long;
+}
+
+.animation-fade-in {
+    animation-name: fade-in;
+}
+
+.animation-fade-out {
+    animation-name: fade-out;
+}

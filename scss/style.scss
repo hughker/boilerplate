@@ -1,12 +1,63 @@
-/*------------------------------------*\
-    elbdudler2015
-\*------------------------------------*/
+/**
+ * Projectname
+ */
 
-@import "_assets/vars";
-@import "_assets/mixins";
-@import "_assets/normalize";
-@import "_assets/typography";
-@import "_assets/generic";
-@import "_modules/header";
-@import "_modules/footer";
-@import "_assets/helper";
+
+/**
+ * Settings
+ */
+@import "settings.colors";
+@import "settings.widths";
+@import "settings.typography";
+@import "settings.responsive";
+@import "settings.animations";
+
+
+/**
+ * Tools
+ */
+@import "tools.responsive";
+@import "tools.animations";
+
+
+/**
+ * Generic
+ */
+@import "generic.box-sizing";
+@import "generic.reset";
+@import "generic.normalize";
+
+
+/**
+ * Base
+ */
+@import "base.page";
+@import "base.headings";
+@import "base.links";
+@import "base.lists";
+@import "base.images";
+
+
+/**
+ * Objects
+ */
+@import "objects.wrappers";
+@import "objects.media";
+@import "objects.list-ui";
+@import "objects.buttons";
+@import "objects.animations";
+
+
+/**
+ * Components
+ */
+@import "components.page-head";
+@import "components.site-nav";
+@import "components.page-foot";
+
+
+/**
+ * Trumps
+ */
+@import "trumps.clearfix";
+@import "trumps.helpers";

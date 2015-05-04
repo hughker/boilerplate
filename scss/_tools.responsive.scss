@@ -1,35 +1,35 @@
 /**
- * Mixins & Extends
+ * Media Query Mixin
  */
 
 @mixin breakpoint($bp) {
     @if $bp == s {
-        @media #{$mq--s} {
+        @media #{$mq-s} {
             @content;
         }
     }
     @if $bp == m {
-        @media #{$mq--m} {
+        @media #{$mq-m} {
             @content;
         }
     }
     @if $bp == l {
-        @media #{$mq--l} {
+        @media #{$mq-l} {
             @content;
         }
     }
     @if $bp == m-up {
-        @media #{$mq--m-up} {
+        @media #{$mq-m-up} {
             @content;
         }
     }
     @if $bp == m-down {
-        @media #{$mq--m-down} {
+        @media #{$mq-m-down} {
             @content;
         }
     }
     @if $bp == wrap {
-        @media #{$mq--wrap} {
+        @media #{$mq-wrap} {
             @content;
         }
     }
@@ -37,13 +37,5 @@
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (-o-min-device-pixel-ratio: 2/1) {
             @content;
         }
-    }
-}
-
-%clearfix {
-    &:after {
-        content: '';
-        display: table;
-        clear: both;
     }
 }

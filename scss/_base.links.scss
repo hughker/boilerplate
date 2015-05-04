@@ -1,0 +1,13 @@
+/**
+ * Links
+ */
+
+a {
+    color: $color-links;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: $color-links-hover;
+}

@@ -1,0 +1,38 @@
+/**
+ * Media Objects
+ */
+
+$media-gutter: $spacing-unit;
+
+
+.media {
+    @extend %clearfix;
+    display: block;
+}
+
+    .media__img {
+        float: left;
+        margin-right: $media-gutter;
+
+        > img {
+            display: block;
+        }
+    }
+
+    .media__body {
+        display: block;
+        overflow: hidden;
+
+        &,
+        > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+.media--rev {
+    > .media__img {
+        float: right;
+        margin-right: 0;
+        margin-left: $media-gutter;
+    }
+}
