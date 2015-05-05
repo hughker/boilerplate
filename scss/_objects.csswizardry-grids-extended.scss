@@ -1,0 +1,63 @@
+/**
+ * Extends the csswizardry-grids
+ */
+
+@import "objects.csswizardry-grids";
+
+
+@mixin grid-media-query-additional($media-query) {
+    $breakpoint-found: false;
+
+    @each $breakpoint in $breakpoints {
+        $name: nth($breakpoint, 1);
+        $declaration: nth($breakpoint, 2);
+
+        @if $media-query == $name and $declaration {
+            $breakpoint-found: true;
+
+            @if length($breakpoint) > 2 {
+
+                $cust-gutter: nth($breakpoint, 3);
+
+                @media only screen and #{$declaration} {
+                    .grid, .grid--rev, .grid--full, .grid--right, .grid--center {
+                        margin-left: -#{$cust-gutter};
+                    }
+
+                    .grid__item {
+                        padding-left: #{$cust-gutter};
+                    }
+                }
+            }
+
+            @media only screen and #{$declaration} {
+                .#{$name}--hidden {
+                    display: none;
+                }
+            }
+
+            @media only screen and #{$declaration} {
+                .#{$name}--show {
+                    display: block;
+                }
+            }
+
+            @media only screen and #{$declaration} {
+                .#{$name}--inline-show {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    @if $breakpoint-found == false {
+        @warn "Breakpoint ‘#{$media-query}’ does not exist"
+    }
+}
+
+
+@if $responsive == true {
+    @each $name in $breakpoint-has-widths {
+        @include grid-media-query-additional($name);
+    }
+}

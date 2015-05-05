@@ -29,18 +29,20 @@
 
 
 /**
- * Base
+ * Elements
  */
-@import "base.page";
-@import "base.headings";
-@import "base.links";
-@import "base.lists";
-@import "base.images";
+@import "elements.page";
+@import "elements.headings";
+@import "elements.links";
+@import "elements.lists";
+@import "elements.images";
 
 
 /**
  * Objects
  */
+@import "objects.csswizardry-grids";
+@import "objects.csswizardry-grids-extended";
 @import "objects.wrappers";
 @import "objects.media";
 @import "objects.list-ui";
