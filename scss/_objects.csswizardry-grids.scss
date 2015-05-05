@@ -128,16 +128,15 @@ $use-markup-fix:        true!default;
  */
 
 $breakpoints: (
-    's' $meda-query--small $grid-gap--small,
-    'm' $mediq-query--medium $grid-gap--medium,
+    's' $media-query--small $grid-gap--small,
+    'm' $media-query--medium $grid-gap--medium,
     'l' $media-query--large $grid-gap--large
 );
 
 
 /**
  *
- * Define which namespaced breakpoints you would like to generate for each of
- * widths, push and pull. This is handy if you only need pull on, say, desk, or
+ * Define which namespaced breakpoints you would like to generate for each of * widths, push and pull. This is handy if you only need pull on, say, desk, or
  * you only need a new width breakpoint at mobile sizes. It allows you to only
  * compile as much CSS as you need. All are turned on by default, but you can
  * add and remove breakpoints at will.

@@ -3,7 +3,7 @@
  */
 
 $breakpoint--small: 499px;
-$breakpoint--medium: $width-s+1;
+$breakpoint--medium: $breakpoint--small+1;
 $breakpoint--large: 1024px;
 
 $width-wrap: 1280px;

@@ -4,32 +4,32 @@
 
 @mixin breakpoint($bp) {
     @if $bp == s {
-        @media #{$mq-s} {
+        @media #{$media-query--small} {
             @content;
         }
     }
     @if $bp == m {
-        @media #{$mq-m} {
+        @media #{$media-query--medium} {
             @content;
         }
     }
     @if $bp == l {
-        @media #{$mq-l} {
+        @media #{$media-query--large} {
             @content;
         }
     }
     @if $bp == m-up {
-        @media #{$mq-m-up} {
+        @media #{$media-query--m-up} {
             @content;
         }
     }
     @if $bp == m-down {
-        @media #{$mq-m-down} {
+        @media #{$media-query--m-down} {
             @content;
         }
     }
     @if $bp == wrap {
-        @media #{$mq-wrap} {
+        @media #{$media-query--wrap} {
             @content;
         }
     }
