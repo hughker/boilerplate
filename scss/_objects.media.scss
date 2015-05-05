@@ -5,12 +5,12 @@
 $media-gutter: $spacing-unit;
 
 
-.media {
+.o-media {
     @extend %clearfix;
     display: block;
 }
 
-    .media__img {
+    .o-media__img {
         float: left;
         margin-right: $media-gutter;
 
@@ -19,7 +19,7 @@ $media-gutter: $spacing-unit;
         }
     }
 
-    .media__body {
+    .o-media__body {
         display: block;
         overflow: hidden;
 
@@ -29,8 +29,8 @@ $media-gutter: $spacing-unit;
         }
     }
 
-.media--rev {
-    > .media__img {
+.o-media--rev {
+    > .o-media__img {
         float: right;
         margin-right: 0;
         margin-left: $media-gutter;

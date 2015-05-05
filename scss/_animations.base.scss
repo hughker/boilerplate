@@ -1,0 +1,16 @@
+/**
+ * Animation Base
+ */
+
+.a-animation,
+.a-animation-long {
+    animation-fill-mode: both;
+}
+
+.a-animation {
+    animation-duration: $animation-duration;
+}
+
+.a-animation-long {
+    animation-duration: $animation-duration-long;
+}

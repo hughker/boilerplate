@@ -10,14 +10,13 @@
 @import "settings.widths";
 @import "settings.typography";
 @import "settings.responsive";
-@import "settings.animations";
+//@import "settings.animations";
 
 
 /**
  * Tools
  */
 @import "tools.responsive";
-//@import "tools.animations";
 
 
 /**
@@ -41,13 +40,10 @@
 /**
  * Objects
  */
-//@import "objects.csswizardry-grids";
-//@import "objects.csswizardry-grids-extended";
 @import "objects.wrappers";
 @import "objects.media";
 @import "objects.list-ui";
 @import "objects.buttons";
-//@import "objects.animations";
 
 
 /**
@@ -56,6 +52,14 @@
 @import "components.page-head";
 @import "components.site-nav";
 @import "components.page-foot";
+
+
+/**
+ * Animations
+ */
+//@import "animations.base";
+//@import "animations.fade-in";
+//@import "animations.fade-out";
 
 
 /**
