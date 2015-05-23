@@ -19,12 +19,12 @@
         }
     }
     @if $bp == m-up {
-        @media #{$media-query--m-up} {
+        @media #{$media-query--medium-up} {
             @content;
         }
     }
     @if $bp == m-down {
-        @media #{$media-query--m-down} {
+        @media #{$media-query--medium-down} {
             @content;
         }
     }
